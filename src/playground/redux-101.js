@@ -1,5 +1,6 @@
 import { createStore } from "redux";
 
+<<<<<<< HEAD
 const store = createStore((state = { count: 0 }, action) => {
   switch (action.type) {
     case "INCREMENT":
@@ -54,3 +55,10 @@ store.dispatch({
   type: "SET",
   count: 101
 });
+=======
+const store = createStore((state = { count: 0 }) => {
+  return state;
+});
+
+console.log(store.getState());
+>>>>>>> d40fd861e18cbe85b3a90b8e6dd01383aa7bb78f
