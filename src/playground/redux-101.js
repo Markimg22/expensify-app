@@ -1,20 +1,38 @@
 import { createStore } from "redux";
 
-<<<<<<< HEAD
-const store = createStore((state = { count: 0 }, action) => {
+// Actions Generators - funções que retornam objetos
+
+const incrementCount = ({ incrementBy = 1 } = {}) => ({
+  type: "INCREMENT",
+  incrementBy
+});
+
+const decrementCount = ({ decrementBy = 1 } = {}) => ({
+  type: "DECREMENT",
+  decrementBy
+});
+
+const setCount = ({ count } = {}) => ({
+  type: "SET",
+  count
+});
+
+const resetCount = () => ({
+  type: "RESET"
+});
+
+const storeRedux = createStore((state = { count: 0 }, action) => {
   switch (action.type) {
     case "INCREMENT":
-      const incrementBy = typeof action.incrementBy === "number" ? action.incrementBy : 1;
       return {
-        count: state.count + incrementBy
+        count: state.count + action.incrementBy
       };
 
     case "DECREMENT":
-      const decrementBy = typeof action.decrementBy === "number" ? action.decrementBy : 1;
       return {
-        count: state.count - decrementBy
+        count: state.count - action.decrementBy
       };
-    
+
     case "SET":
       return {
         count: action.count
@@ -24,41 +42,17 @@ const store = createStore((state = { count: 0 }, action) => {
       return {
         count: 0
       };
-    
+
     default:
       return state;
   }
 });
 
-// 'subscribe' chamada toda vez que a 'store' muda.
-const unsubscribe = store.subscribe(() => {
-  console.log(store.getState());
+const unsubscribe = storeRedux.subscribe(() => {
+  console.log(storeRedux.getState());
 });
 
-// Definindo 'actions'
-// executa novamente a 'store'
-store.dispatch({
-  type: "INCREMENT",
-  incrementBy: 5
-});
-
-store.dispatch({
-  type: "DECREMENT",
-  decrementBy: 10
-});
-
-store.dispatch({
-  type: "RESET"
-});
-
-store.dispatch({
-  type: "SET",
-  count: 101
-});
-=======
-const store = createStore((state = { count: 0 }) => {
-  return state;
-});
-
-console.log(store.getState());
->>>>>>> d40fd861e18cbe85b3a90b8e6dd01383aa7bb78f
+storeRedux.dispatch(incrementCount({ incrementBy: 20 }));
+storeRedux.dispatch(decrementCount({ decrementBy: 10 }));
+storeRedux.dispatch(setCount({ count: 100 }));
+storeRedux.dispatch(resetCount());
