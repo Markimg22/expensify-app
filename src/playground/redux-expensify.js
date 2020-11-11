@@ -7,7 +7,7 @@ store.subscribe(() => {
 
 /**
  * Tests
- */ 
+ */
 
 const expenseOne = store.dispatch(addExpense({ description: "Rent", amount: 1000, createdAt: -1000 }));
 const expenseTwo = store.dispatch(addExpense({ description: "Coffe", amount: 300, createdAt: 1000 }));

@@ -35,7 +35,7 @@ const countReducer = (state = { count: 0 }, action) => {
       };
     case "SET":
       return {
-        count: action. count
+        count: action.count
       };
     case "RESET":
       return {
