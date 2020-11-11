@@ -38,7 +38,6 @@ const requireAthentication = (WrappedComponent) => {
   );
 };
 
-
 const AdminInfo = withAdminWarning(Info);
 const AuthInfo = requireAthentication(Info);
 
