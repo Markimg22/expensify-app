@@ -36,7 +36,7 @@ const countReducer = (state = { count: 0 }, action) => {
     case "DECREMENT":
       return { count: state.count - action.decrementBy };
     case "SET":
-      return { count: action. count };
+      return { count: action.count };
     case "RESET":
       return { count: 0 };
     default:
