@@ -7,9 +7,7 @@ const EditExpensePage = (props) => (
   <div>
     <ExpenseForm 
       expense={props.expense}
-      onSubmit={expense => {
-        props.dispatch(editExpense(props.expense.id, expense));
-      }}
+      onSubmit={expense => props.dispatch(editExpense(props.expense.id, expense))}
     />
     <button onClick={() => {
       props.dispatch(removeExpense({ id: props.expense.id }));

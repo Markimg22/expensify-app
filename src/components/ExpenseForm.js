@@ -4,10 +4,8 @@ import { SingleDatePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 
 export default class ExpenseForm extends React.Component {
-
   constructor(props) {
     super(props);
-    
     this.state = {
       description: props.expense ? props.expense.description : "",
       amount: props.expense ? (props.expense.amount / 100).toString() : "",
@@ -80,6 +78,7 @@ export default class ExpenseForm extends React.Component {
             onDateChange={this.onDateChange}
             focused={this.state.calendarFocused}
             onFocusChange={this.onFocusChange}
+            showClearDate={true}
             numberOfMonths={1}
             isOutsideRange={() => false}
           />
