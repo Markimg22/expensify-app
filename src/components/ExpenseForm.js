@@ -1,18 +1,18 @@
-import React from "react";
-import moment from "moment";
-import { SingleDatePicker } from "react-dates";
-import "react-dates/lib/css/_datepicker.css";
+import React from 'react';
+import moment from 'moment';
+import { SingleDatePicker } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
 
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: props.expense ? props.expense.description : "",
-      amount: props.expense ? (props.expense.amount / 100).toString() : "",
-      note: props.expense ? props.expense.note : "",
+      description: props.expense ? props.expense.description : '',
+      amount: props.expense ? (props.expense.amount / 100).toString() : '',
+      note: props.expense ? props.expense.note : '',
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       calendarFocused: false,
-      error: ""
+      error: ''
     };
   }
 
@@ -48,9 +48,9 @@ export default class ExpenseForm extends React.Component {
     event.preventDefault();
 
     if (!this.state.description || !this.state.amount) {
-      this.setState(() => ({ error: "Please provide description and amount." }));
+      this.setState(() => ({ error: 'Please provide description and amount.' }));
     } else {
-      this.setState(() => ({ error: "" }));
+      this.setState(() => ({ error: '' }));
       this.props.onSubmit({
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
@@ -65,11 +65,11 @@ export default class ExpenseForm extends React.Component {
       <div>
         {this.state.error && <p>ERROR: {this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
-          <input type="text" placeholder="Description" autoFocus
+          <input type='text' placeholder='Description' autoFocus
             value={this.state.description}
             onChange={this.onDescriptionChange}
           />
-          <input type="text" placeholder="Amount"
+          <input type='text' placeholder='Amount'
             value={this.state.amount}
             onChange={this.onAmountChange}
           />
@@ -82,7 +82,7 @@ export default class ExpenseForm extends React.Component {
             numberOfMonths={1}
             isOutsideRange={() => false}
           />
-          <textarea placeholder="Add a note for your expense (optional)" onChange={this.onNoteChange}></textarea>
+          <textarea placeholder='Add a note for your expense (optional)' onChange={this.onNoteChange}></textarea>
           <button>Finished</button>
         </form>
       </div>
