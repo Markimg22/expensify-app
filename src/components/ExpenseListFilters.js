@@ -11,7 +11,8 @@ class ExpenseListFilters extends React.Component {
   handleSortBy = (event) => {
     if (event.target.value === 'date') {
       this.props.dispatch(sortByDate());
-    } else if (event.target.value === 'amount') {
+    } 
+    else if (event.target.value === 'amount') {
       this.props.dispatch(sortByAmount());
     }
   };

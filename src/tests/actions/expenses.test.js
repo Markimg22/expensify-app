@@ -1,7 +1,7 @@
 import { addExpense, editExpense, removeExpense } from '../../store/actions/expenses';
 
 // Add
-test('shoud setup add expense action object with provided values', () => {
+test('should setup add expense action object with provided values', () => {
   const expenseData = {
     description: 'Rent',
     amount: 109500,
@@ -35,9 +35,7 @@ test('should setup edit expense action object', () => {
   expect(action).toEqual({
     type: 'EDIT_EXPENSE',
     id: '123abc', 
-    updates: {
-      note: 'New note value'
-    }
+    updates: { note: 'New note value' }
   });
 });
 
