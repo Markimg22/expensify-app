@@ -5,6 +5,7 @@ import AppRouter from './routers/AppRouter';
 import configStore from './store/configureStore';
 import { addExpense } from './store/actions/expenses';
 import 'normalize.css/normalize.css';
+import 'react-dates/lib/css/_datepicker.css';
 
 const store = configStore();
 
