@@ -1,49 +1,53 @@
-import { addExpense, editExpense, removeExpense } from '../../store/actions/expenses';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { startAddExpense, addExpense, editExpense, removeExpense } from '../../store/actions/expenses';
+import expenses from '../fixtures/expenses';
 
-// Add
+const createMockStore = configureMockStore([thunk]);
+
+// Add Expense
 test('should setup add expense action object with provided values', () => {
-  const expenseData = {
-    description: 'Rent',
-    amount: 109500,
-    createdAt: 10000,
-    note: 'this was last months rent.'
-  };
-  const action = addExpense(expenseData);
+  const action = addExpense(expenses[2]);
   expect(action).toEqual({
     type: 'ADD_EXPENSE',
-    expense: { ...expenseData, id: expect.any(String) }
+    expense: expenses[2]
   });
 });
 
-test('should setup add expense action object with default values', () => {
-  const action = addExpense();
-  expect(action).toEqual({ 
-    type: 'ADD_EXPENSE',
-    expense: { 
-      id: expect.any(String),
-      description: '',
-      note: '',
-      amount: 0,
-      createdAt: 0
-    }
+test('should add expense to database and store', (done) => {
+  const store = createMockStore({});
+  const expenseData = {
+    description: 'Mouse',
+    amount: 3000,
+    note: 'This one is better',
+    createdAt: 1000
+  };
+
+  store.dispatch(startAddExpense(expenseData)).then(() => {
+    expect(1).toBe(2);
+    done();
   });
 });
 
-// Edit
+test('should add expense with default to database and store', () => {
+
+});
+
+// Edit Expense
 test('should setup edit expense action object', () => {
   const action = editExpense('123abc', { note: 'New note value' });
   expect(action).toEqual({
     type: 'EDIT_EXPENSE',
-    id: '123abc', 
+    id: '123abc',
     updates: { note: 'New note value' }
   });
 });
 
-// Remove
+// Remove Expense
 test('should setup remove expense action object', () => {
   const action = removeExpense({ id: '123abc' });
-  expect(action).toEqual({ 
+  expect(action).toEqual({
     type: 'REMOVE_EXPENSE',
     id: '123abc'
-   });
+  });
 });
