@@ -1,6 +1,7 @@
 import database from '../../firebase/firebase';
-import expenses from '../../tests/fixtures/expenses';
 
+
+// Add Expense
 export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',
   expense
@@ -17,11 +18,21 @@ export const startAddExpense = (expenseData = {}) => {
   };
 };
 
+// Remove Expense
 export const removeExpense = ({ id } = {}) => ({
   type: 'REMOVE_EXPENSE',
   id
 });
 
+export const startRemoveExpense = ({ id } = {}) => {
+  return (dispatch) => {
+    return database.ref(`expenses/${id}`).remove().then(() => {
+      dispatch(removeExpense({ id }));
+    });
+  };
+};
+
+// Edit Expense
 export const editExpense = (id, updates) => ({
   type: 'EDIT_EXPENSE',
   id,
