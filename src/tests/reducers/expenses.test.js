@@ -43,7 +43,7 @@ test('should note remove expenses if id not found', () => {
 // edit expense
 test('should edit an expense', () => {
   const amount = 100;
-  const action = { 
+  const action = {
     type: 'EDIT_EXPENSE',
     id: expenses[1].id,
     updates: { amount }
@@ -54,7 +54,7 @@ test('should edit an expense', () => {
 
 test('should not edit expense if id not foound', () => {
   const amount = 100;
-  const action = { 
+  const action = {
     type: 'EDIT_EXPENSE',
     id: '-1',
     updates: { amount }
