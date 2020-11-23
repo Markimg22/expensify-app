@@ -8,6 +8,7 @@ export class AddExpensePage extends React.Component {
     this.props.startAddExpense(expense);
     this.props.history.push('/');
   };
+  
   render() {
     return (
       <div>
@@ -17,9 +18,7 @@ export class AddExpensePage extends React.Component {
           </div>
         </div>
         <div className="content-container">
-          <ExpenseForm
-            onSubmit={this.onSubmit}
-          />
+          <ExpenseForm onSubmit={this.onSubmit} />
         </div>
       </div>
     );
